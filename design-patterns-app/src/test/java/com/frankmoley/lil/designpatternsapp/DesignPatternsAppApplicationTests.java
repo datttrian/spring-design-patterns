@@ -1,10 +1,10 @@
-package com.frankmoley.lil.designpatternapp;
+package com.frankmoley.lil.designpatternsapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DesignPatternAppApplicationTests {
+class DesignPatternsAppApplicationTests {
 
 	@Test
 	void contextLoads() {
