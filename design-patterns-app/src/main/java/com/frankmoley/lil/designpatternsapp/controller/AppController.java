@@ -65,7 +65,7 @@ public class AppController {
     @Autowired
     RestTemplate restTemplate;
 
-    @GetMapping("presidentConTact/{id}")
+    @GetMapping("presidentContact/{id}")
     public Contact getPresContById(@PathVariable Long id) {
         PresidentEntity entity = this.restTemplate
                 .getForEntity("http://localhost:8080/presidents/{id}", PresidentEntity.class, id).getBody();
