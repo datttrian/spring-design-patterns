@@ -1,13 +1,13 @@
-package com.frankmoley.lil.designpatternsapp.springdesignpatterns;
+package com.frankmoley.lil.designpatternapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringDesignPatternsApplication {
+public class DesignPatternAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringDesignPatternsApplication.class, args);
+		SpringApplication.run(DesignPatternAppApplication.class, args);
 	}
 
 }
