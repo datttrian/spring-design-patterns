@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class PresidentEntity {
     @Id
     @GeneratedValue
-    @Column(name = "PRSIDENT_ID")
+    @Column(name = "PRESIDENT_ID")
     private long id;
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -23,7 +23,7 @@ public class PresidentEntity {
     private String emailAddress;
 
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(long id) {
@@ -31,7 +31,7 @@ public class PresidentEntity {
     }
 
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -39,7 +39,7 @@ public class PresidentEntity {
     }
 
     public String getMiddleInitial() {
-        return this.middleInitial;
+        return middleInitial;
     }
 
     public void setMiddleInitial(String middleInitial) {
@@ -47,7 +47,7 @@ public class PresidentEntity {
     }
 
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
@@ -55,7 +55,7 @@ public class PresidentEntity {
     }
 
     public String getEmailAddress() {
-        return this.emailAddress;
+        return emailAddress;
     }
 
     public void setEmailAddress(String emailAddress) {
@@ -64,13 +64,13 @@ public class PresidentEntity {
 
     @Override
     public String toString() {
-        return "{" +
-                " id='" + getId() + "'" +
-                ", firstName='" + getFirstName() + "'" +
-                ", middleInitial='" + getMiddleInitial() + "'" +
-                ", lastName='" + getLastName() + "'" +
-                ", emailAddress='" + getEmailAddress() + "'" +
-                "}";
+        final StringBuilder sb = new StringBuilder("PresidentEntity{");
+        sb.append("id=").append(id);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", middleInitial='").append(middleInitial).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", emailAddress='").append(emailAddress).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
-
 }
