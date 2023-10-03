@@ -4,12 +4,16 @@ import com.frankmoley.lil.designpatternsapp.builder.Contact;
 import com.frankmoley.lil.designpatternsapp.builder.ContactBuilder;
 import com.frankmoley.lil.designpatternsapp.factory.Pet;
 import com.frankmoley.lil.designpatternsapp.factory.PetFactory;
+import com.frankmoley.lil.designpatternsapp.repository.PresidentEntity;
+import com.frankmoley.lil.designpatternsapp.repository.PresidentRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +52,26 @@ public class AppController {
         contacts.add(new ContactBuilder().setFirstName("Thomas").setLastName("Jefferson").buildContact());
 
         return contacts;
+    }
+
+    @Autowired
+    PresidentRepository presidentRepository;
+
+    @GetMapping("presidents/{id}")
+    public PresidentEntity getPresById(@PathVariable Long id) {
+        return this.presidentRepository.findById(id).get();
+    }
+
+    @Autowired
+    RestTemplate restTemplate;
+
+    @GetMapping("presidentConTact/{id}")
+    public Contact getPresContById(@PathVariable Long id) {
+        PresidentEntity entity = this.restTemplate
+                .getForEntity("http://localhost:8080/presidents/{id}", PresidentEntity.class, id).getBody();
+
+        return (new ContactBuilder().setFirstName(entity.getFirstName()).setLastName(entity.getLastName())
+                .buildContact());
     }
 
 }
